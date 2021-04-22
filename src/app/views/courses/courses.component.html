@@ -1,0 +1,77 @@
+<section class="create-course mt-5">
+  <div class="container">
+    <h2 class="font-weight-bold"> <i class="fa fa-book fa-3x"></i> Create Course</h2>
+    <form
+      #createCourse="ngForm"
+      (ngSubmit)="createcourse(createCourse.value)"
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Course Name</label>
+        <input
+          #name="ngModel"
+          ngModel
+          name="name"
+          type="text"
+          class="form-control"
+          required
+          id="name"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="teacher" class="form-label">teacher Name</label>
+        <input
+          #teachername="ngModel"
+          ngModel
+          name="teacher"
+          type="text"
+          class="form-control"
+          required
+          id="teacher"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          #price="ngModel"
+          ngModel
+          name="price"
+          type="number"
+          class="form-control"
+          required
+          id="price"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="createCourse.invalid"
+      >
+        Submit
+      </button>
+    </form>
+
+
+    <!-- table -->
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Course Name</th>
+          <th scope="col">Teacher</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td>{{course.name}}</td>
+          <td>{{course.teacher}}</td>
+          <td>{{course.price}}</td>
+          <td><button class="btn btn-primary" (click)="deletecourse(course.id)">Delete</button></td>
+          <td><a routerLink="/singlecourse/{{course.id}}" class="btn btn-primary">Update</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

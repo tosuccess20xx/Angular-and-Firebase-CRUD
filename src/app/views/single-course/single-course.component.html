@@ -1,0 +1,53 @@
+<section class="create-course mt-5">
+  <div class="container">
+    <h2 class="font-weight-bold"> Create Course</h2>
+    <form
+      #updateCourse="ngForm"
+      (ngSubmit)="update(updateCourse.value);updateCourse.reset()"
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Course Name</label>
+        <input
+          name="name"
+          type="text"
+          [(ngModel)]="courses.name"
+          class="form-control"
+          required
+          id="name"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="teacher" class="form-label">teacher Name</label>
+        <input
+          name="teacher"
+          type="text"
+          [(ngModel)]="courses.teacher"
+          class="form-control"
+          required
+          id="teacher"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          [(ngModel)]="courses.price"
+          name="price"
+          type="number"
+          class="form-control"
+          required
+          id="price"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="updateCourse.invalid"
+      >
+        Update
+      </button>
+    </form>
+
+  </div>
+</section>
